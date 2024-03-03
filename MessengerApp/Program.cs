@@ -14,9 +14,10 @@ namespace MessengerApp
 			var app = builder.Build();
 
 			app.UseCors(o=>o
-			.WithOrigins("http://localhost:4200")
+			//.WithOrigins("http://localhost:4200")
 			.AllowAnyHeader()
 			.AllowAnyMethod()
+			.SetIsOriginAllowed((host)=>true)
 			.AllowCredentials()
 			);
 
