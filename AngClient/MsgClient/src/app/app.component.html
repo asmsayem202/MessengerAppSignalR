@@ -4,7 +4,7 @@
 <button [disabled]="disconnected" (click)="sendMessage()">Send</button>
 <br />
 
-<input [disabled]="disconnected" (change)="sendFile($event)" type="file" />
+<input [disabled]="disconnected" (change)="sendFile($event)" type="file" #fileInput />
 
 <hr />
 <div>

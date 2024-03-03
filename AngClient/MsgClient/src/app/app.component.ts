@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HubConnection, HubConnectionBuilder, HubConnectionState } from '@microsoft/signalr';
@@ -55,6 +55,8 @@ export class AppComponent implements OnInit {
     this.message = '';
   }
 
+  @ViewChild('fileInput') fileInput!: ElementRef;
+
   sendFile(event: any) {
     const file: File = event.target.files[0];
 
@@ -63,8 +65,10 @@ export class AppComponent implements OnInit {
     reader.onload = () => {
       this.connection.invoke("ShareImg", this.user, reader.result);
     };
+    this.fileInput.nativeElement.value = '';
   }
-  
+
+
 }
 
 export class ChatMessage {
